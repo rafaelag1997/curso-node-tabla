@@ -1,10 +1,10 @@
 
-
+const fs = require('fs');
 console.clear();
 console.log(`============`);
 console.log(`TABLA DEL 5`);
 console.log(`============`);
-const base = 3;
+const base = 5;
 let xx = 1,salida = '';
 
 for( xx = 1 ; xx <= 10 ; xx ++){
@@ -19,13 +19,13 @@ const countChar = texto =>{
 
 }
 try {
-    fs.writeFileSync(`texto_${base}.txt`,salida);
+    fs.writeFileSync(`salida/texto_${base}.txt`,salida);
     countChar(salida)
             .then(msg => console.log(`se creó el archivo \n${msg}`))
             .catch(err => console.log(err));
     console.log(salida);
 } catch (error) {
-    console.log(`hubo un error en la localizacion del archivo ${error.code == 'ENOET' ? 'No se encuentra la ubicacion del archivo':''}`);
+    console.log(`Hubo un error en la localizacion del archivo ${error.code == 'ENOET' ? 'No se encuentra la ubicacion del archivo':error}`);
 }
 
 
